@@ -32,17 +32,17 @@
 
 <script>
 export default {
-  data() {
-    return {
-      result: ''
-    }
-  },
   methods: {
     async fetchRides(file) {
-      this.result = await this.$axios
+      const res = await this.$axios
         .$post('http://kempo-easyride.herokuapp.com/rides', file)
         .then((r) => r)
-      console.log(this.result)
+
+      this.$store.commit('addAll', JSON.parse(JSON.stringify(res)))
+
+      this.$router.push({
+        path: 'results'
+      })
     }
   }
 }
