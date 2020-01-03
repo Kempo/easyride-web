@@ -34,6 +34,8 @@
 export default {
   methods: {
     async fetchRides(file) {
+      // http://kempo-easyride.herokuapp.com/rides
+      // http://localhost:4567/rides
       const res = await this.$axios
         .$post('http://kempo-easyride.herokuapp.com/rides', file)
         .then((r) => r)
