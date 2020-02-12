@@ -12,17 +12,14 @@
           </p>
         </v-card-text>
         <v-card-actions>
-          <!-- Pushes the buttons to the right of the container -->
-          <v-btn color="primary" nuxt to="/inspire">
-            Integrate
-          </v-btn>
+          <v-btn @click="login" color="teal" outlined>Login with Google</v-btn>
           <v-spacer />
           <v-file-input
+            @change="fetchRides"
             label="File input"
             dense
             hide-details
             outlined
-            @change="fetchRides"
           />
         </v-card-actions>
       </v-card>
@@ -36,6 +33,7 @@ export default {
     async fetchRides(file) {
       // http://kempo-easyride.herokuapp.com/rides
       // http://localhost:4567/rides
+
       const res = await this.$axios
         .$post('http://kempo-easyride.herokuapp.com/rides', file)
         .then((r) => r)
@@ -45,6 +43,9 @@ export default {
       this.$router.push({
         path: 'results'
       })
+    },
+    login() {
+      this.$auth.loginWith('google')
     }
   }
 }

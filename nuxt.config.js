@@ -46,8 +46,28 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/auth'
   ],
+  auth: {
+    redirect: {
+      login: '/',
+      callback: '/inspire', // FOR LOADING...
+      logout: '/',
+      home: '/select' // redirected after login
+    },
+    strategies: {
+      google: {
+        client_id:
+          '673594393070-p0jrcuv76knlvc8mlq33j2oi8hb3q3q6.apps.googleusercontent.com',
+        scope: [
+          'https://www.googleapis.com/auth/drive.readonly',
+          'profile',
+          'email'
+        ]
+      }
+    }
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

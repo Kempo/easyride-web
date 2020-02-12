@@ -1,12 +1,5 @@
 export const state = () => ({
-  assignments: [
-    {
-      name: 'Tim'
-    },
-    {
-      name: 'Jacob'
-    }
-  ]
+  assignments: []
 })
 
 export const mutations = {
