@@ -14,14 +14,18 @@
 <script>
 export default {
   async mounted() {
+    const filter = encodeURI(
+      "mimeType = 'application/vnd.google-apps.spreadsheet'"
+    )
+      .split('%20')
+      .join('+')
+
     const res = await this.$axios
-      .$get(
-        'https://www.googleapis.com/drive/v3/files?q=mimeType+%3D+%27application%2Fvnd.google-apps.spreadsheet%27'
-      )
+      .$get('https://www.googleapis.com/drive/v3/files?q=' + filter)
       .then((r) => r)
     console.log(res)
     // mimeType+%3D+%27application%2Fvnd.google-apps.spreadsheet%27 -> url encoded
-    // "application/vnd.google-apps.spreadsheet"
+    // 'application/vnd.google-apps.spreadsheet'
   }
 }
 </script>
