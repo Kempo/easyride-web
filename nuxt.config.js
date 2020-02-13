@@ -62,6 +62,7 @@ export default {
           '673594393070-p0jrcuv76knlvc8mlq33j2oi8hb3q3q6.apps.googleusercontent.com',
         scope: [
           'https://www.googleapis.com/auth/drive.readonly',
+          'https://www.googleapis.com/auth/spreadsheets.readonly',
           'profile',
           'email'
         ]

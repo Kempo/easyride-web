@@ -1,5 +1,8 @@
 export const state = () => ({
-  assignments: []
+  assignments: [],
+  filesList: [],
+  nextPageToken: '',
+  pageIDs: ['']
 })
 
 export const mutations = {
@@ -11,5 +14,9 @@ export const mutations = {
   },
   clear(state) {
     state.assignments = []
+  },
+  updatePage(state, args) {
+    state.filesList = args.list
+    state.nextPageToken = args.token
   }
 }
