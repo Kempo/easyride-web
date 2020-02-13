@@ -18,5 +18,9 @@ export const mutations = {
   updatePage(state, args) {
     state.filesList = args.list
     state.nextPageToken = args.token
+    if (args.token) {
+      state.pageIDs.push(args.token)
+    }
   }
 }
+// ['', page2, page3, page4];

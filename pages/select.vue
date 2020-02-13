@@ -12,9 +12,19 @@
     <v-card>
       <v-list max-height="500" class="overflow-y-auto">
         <v-subheader>SPREADSHEETS</v-subheader>
-        <v-btn>Back</v-btn>
-        <v-btn @click="forwardPage()"> Next </v-btn>
-        <v-list-item v-for="item in currentPage" :key="item.id">
+        <v-btn depressed>Back</v-btn>
+        <v-btn
+          @click="forwardPage()"
+          :disabled="token ? false : true"
+          depressed
+        >
+          Next
+        </v-btn>
+        <v-list-item
+          v-for="item in currentPage"
+          :key="item.id"
+          @click="selectFile(item.id)"
+        >
           <v-list-item-icon>
             <v-icon color="green darken-2">mdi-google-spreadsheet</v-icon>
           </v-list-item-icon>
@@ -32,6 +42,9 @@ export default {
   computed: {
     currentPage() {
       return this.$store.state.filesList
+    },
+    token() {
+      return this.$store.state.nextPageToken
     }
   },
   mounted() {
@@ -64,6 +77,9 @@ export default {
     },
     forwardPage() {
       this.update(this.$store.state.nextPageToken)
+    },
+    selectFile(sheetsID) {
+      console.log(sheetsID)
     }
   }
 }
